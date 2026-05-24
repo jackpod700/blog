@@ -1,13 +1,20 @@
-# Portfolio
+# 성승재 기술 블로그
 
-GitHub Pages용 정적 포트폴리오 사이트입니다.
+GitHub Pages와 Jekyll Chirpy 테마로 만든 기술 블로그입니다.
 
-## 수정할 곳
+## 로컬 실행
 
-- `index.html`: 이름, 소개 문구, 프로젝트, 연락처 링크
-- `styles.css`: 색상, 레이아웃, 반응형 스타일
-- `script.js`: 현재 연도 표시
+Ruby와 Bundler가 설치되어 있다면 아래 명령으로 확인할 수 있습니다.
+
+```bash
+bundle install
+bundle exec jekyll serve
+```
+
+## 글 작성
+
+글은 `_posts` 폴더에 `YYYY-MM-DD-title.md` 형식으로 추가합니다.
 
 ## 배포
 
-GitHub 저장소의 Pages 설정에서 배포 브랜치를 선택하면 루트의 `index.html`이 포트폴리오 페이지로 표시됩니다.
+GitHub Pages 설정에서 Source를 `GitHub Actions`로 선택하면 `.github/workflows/pages-deploy.yml`을 통해 배포됩니다.
