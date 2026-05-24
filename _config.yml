@@ -14,9 +14,9 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 성승재 기술 블로그 # the main title
+title: jackpod7002 # the main title
 
-tagline: 백엔드 개발과 학습 기록 # it will display as the subtitle
+tagline: 개발 학습 기록 # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   Java, Spring Boot, 데이터베이스, 프로젝트 회고를 정리하는 성승재의 기술 블로그입니다.
