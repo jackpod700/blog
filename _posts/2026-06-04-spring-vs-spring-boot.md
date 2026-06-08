@@ -29,7 +29,7 @@ Spring Boot는 이 기능들을 더 적은 설정으로 사용할 수 있게 해
 
 ```text
 Spring = 애플리케이션의 핵심 프레임워크
-Spring Boot = Spring 애플리케이션을 빠르게 만들고 실행하게 해 주는 도구
+Spring Boot = Spring 애플리케이션을 빠르게 만들고 간편하게 실행할 수 있게 해 주는 도구
 ```
 
 ## 기존 Spring의 불편함
