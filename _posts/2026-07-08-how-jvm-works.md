@@ -68,7 +68,7 @@ java Hello
 
 이 글에서 다룰 JVM의 큰 흐름을 그림으로 보면 다음과 같다.
 
-![JVM 전체 구조]({{ '/assets/img/posts/2026-07-08-jvm-architecture.svg' | relative_url }})
+![JVM 전체 구조](/assets/img/posts/2026-07-08-jvm-architecture.svg)
 
 왼쪽에서 `.java` 파일이 `.class` 바이트코드로 컴파일되고, JVM 안에서는 ClassLoader, Runtime Data Area, Execution Engine, Garbage Collector가 함께 동작한다.
 
