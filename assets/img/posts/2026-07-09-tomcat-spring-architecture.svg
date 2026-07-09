@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="920" viewBox="0 0 1280 920" role="img" aria-labelledby="title desc">
+  <title id="title">Tomcat과 Spring MVC 요청 처리 전체 구조</title>
+  <desc id="desc">HTTP request enters Tomcat through Coyote, moves into Catalina, passes Pipeline, Valve, Filter Chain, DispatcherServlet, Spring MVC, Controller and Service, then returns as JSON or JSP rendered by Jasper.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.14"/>
+    </filter>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 800 34px Arial, 'Noto Sans KR', sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 18px Arial, 'Noto Sans KR', sans-serif; fill: #475569; }
+      .label { font: 700 21px Arial, 'Noto Sans KR', sans-serif; fill: #0f172a; }
+      .small { font: 500 16px Arial, 'Noto Sans KR', sans-serif; fill: #334155; }
+      .tiny { font: 500 14px Arial, 'Noto Sans KR', sans-serif; fill: #475569; }
+      .box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 14; filter: url(#shadow); }
+      .tomcat { fill: #eef6ff; stroke: #2563eb; stroke-width: 3; rx: 22; filter: url(#shadow); }
+      .coyote { fill: #f0f9ff; stroke: #0284c7; stroke-width: 2; rx: 14; }
+      .catalina { fill: #f0fdf4; stroke: #16a34a; stroke-width: 2; rx: 14; }
+      .spring { fill: #fff7ed; stroke: #f97316; stroke-width: 2; rx: 14; }
+      .jasper { fill: #fdf2f8; stroke: #db2777; stroke-width: 2; rx: 14; }
+      .inner { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 10; }
+      .pill { fill: #e0f2fe; stroke: #38bdf8; stroke-width: 1.5; rx: 12; }
+      .arrow { fill: none; stroke: #334155; stroke-width: 3; marker-end: url(#arrow); }
+      .thin { fill: none; stroke: #64748b; stroke-width: 2.2; marker-end: url(#arrow); }
+      .dash { fill: none; stroke: #64748b; stroke-width: 2.2; stroke-dasharray: 8 8; marker-end: url(#arrow); }
+      .line { stroke: #cbd5e1; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1280" height="920"/>
+
+  <text class="title" x="640" y="58" text-anchor="middle">Tomcat 위에서 Spring 요청이 처리되는 전체 구조</text>
+  <text class="subtitle" x="640" y="90" text-anchor="middle">Coyote가 요청을 받고, Catalina가 Servlet을 찾고, DispatcherServlet이 Spring MVC로 요청을 넘긴다.</text>
+
+  <rect class="box" x="58" y="154" width="160" height="88"/>
+  <text class="label" x="138" y="188" text-anchor="middle">Client</text>
+  <text class="small" x="138" y="216" text-anchor="middle">HTTP Request</text>
+
+  <rect class="tomcat" x="272" y="132" width="704" height="606"/>
+  <text class="label" x="624" y="170" text-anchor="middle">Tomcat</text>
+
+  <rect class="coyote" x="306" y="208" width="198" height="278"/>
+  <text class="label" x="405" y="242" text-anchor="middle">Coyote</text>
+  <text class="small" x="405" y="270" text-anchor="middle">Connector</text>
+  <line class="line" x1="332" y1="292" x2="478" y2="292"/>
+  <rect class="inner" x="332" y="318" width="146" height="44"/>
+  <text class="tiny" x="405" y="345" text-anchor="middle">Endpoint</text>
+  <rect class="inner" x="332" y="378" width="146" height="44"/>
+  <text class="tiny" x="405" y="405" text-anchor="middle">Processor</text>
+  <rect class="inner" x="332" y="438" width="146" height="44"/>
+  <text class="tiny" x="405" y="465" text-anchor="middle">CoyoteAdapter</text>
+
+  <rect class="catalina" x="542" y="208" width="398" height="278"/>
+  <text class="label" x="741" y="242" text-anchor="middle">Catalina</text>
+  <text class="small" x="741" y="270" text-anchor="middle">Servlet Container</text>
+  <line class="line" x1="574" y1="292" x2="908" y2="292"/>
+
+  <rect class="inner" x="570" y="318" width="90" height="46"/>
+  <text class="tiny" x="615" y="346" text-anchor="middle">Engine</text>
+  <rect class="inner" x="675" y="318" width="90" height="46"/>
+  <text class="tiny" x="720" y="346" text-anchor="middle">Host</text>
+  <rect class="inner" x="780" y="318" width="100" height="46"/>
+  <text class="tiny" x="830" y="346" text-anchor="middle">Context</text>
+
+  <rect class="inner" x="570" y="392" width="142" height="50"/>
+  <text class="tiny" x="641" y="412" text-anchor="middle">Pipeline</text>
+  <text class="tiny" x="641" y="431" text-anchor="middle">Valve</text>
+  <rect class="inner" x="738" y="392" width="142" height="50"/>
+  <text class="tiny" x="809" y="412" text-anchor="middle">Wrapper</text>
+  <text class="tiny" x="809" y="431" text-anchor="middle">Servlet 선택</text>
+
+  <rect class="spring" x="306" y="536" width="634" height="166"/>
+  <text class="label" x="623" y="570" text-anchor="middle">Web Application / Spring MVC</text>
+
+  <rect class="inner" x="334" y="604" width="132" height="54"/>
+  <text class="tiny" x="400" y="626" text-anchor="middle">Filter Chain</text>
+  <text class="tiny" x="400" y="646" text-anchor="middle">Security 등</text>
+
+  <rect class="inner" x="496" y="604" width="150" height="54"/>
+  <text class="tiny" x="571" y="626" text-anchor="middle">DispatcherServlet</text>
+  <text class="tiny" x="571" y="646" text-anchor="middle">Spring MVC 입구</text>
+
+  <rect class="inner" x="676" y="604" width="104" height="54"/>
+  <text class="tiny" x="728" y="626" text-anchor="middle">Handler</text>
+  <text class="tiny" x="728" y="646" text-anchor="middle">Mapping/Adapter</text>
+
+  <rect class="inner" x="810" y="604" width="102" height="54"/>
+  <text class="tiny" x="861" y="626" text-anchor="middle">Controller</text>
+  <text class="tiny" x="861" y="646" text-anchor="middle">Service 호출</text>
+
+  <rect class="box" x="1030" y="154" width="170" height="88"/>
+  <text class="label" x="1115" y="188" text-anchor="middle">Response</text>
+  <text class="small" x="1115" y="216" text-anchor="middle">JSON or HTML</text>
+
+  <path class="arrow" d="M 218 198 L 294 198"/>
+  <path class="arrow" d="M 504 346 L 534 346"/>
+  <path class="thin" d="M 880 342 L 908 342 L 908 506 L 400 506 L 400 596"/>
+  <path class="arrow" d="M 466 631 L 488 631"/>
+  <path class="arrow" d="M 646 631 L 668 631"/>
+  <path class="arrow" d="M 780 631 L 802 631"/>
+
+  <rect class="pill" x="998" y="432" width="190" height="50"/>
+  <text class="small" x="1093" y="462" text-anchor="middle">JSON Response</text>
+  <text class="tiny" x="1093" y="482" text-anchor="middle">HttpMessageConverter</text>
+
+  <path class="thin" d="M 912 631 C 962 631 966 457 990 457"/>
+  <path class="arrow" d="M 1093 432 L 1093 250"/>
+
+  <rect class="jasper" x="462" y="780" width="356" height="94"/>
+  <text class="label" x="640" y="814" text-anchor="middle">Jasper</text>
+  <text class="small" x="640" y="842" text-anchor="middle">JSP를 Servlet으로 변환 / 컴파일 / 실행</text>
+  <text class="tiny" x="640" y="864" text-anchor="middle">JSP View를 사용할 때만 주요 흐름에 등장</text>
+
+  <path class="dash" d="M 861 658 C 861 742 760 742 734 780"/>
+  <text class="tiny" x="904" y="730" text-anchor="middle">JSP View</text>
+
+  <path class="dash" d="M 640 780 C 640 742 1115 742 1115 250"/>
+
+  <path class="arrow" d="M 976 198 L 1022 198"/>
+
+  <text class="tiny" x="138" y="270" text-anchor="middle">브라우저 / API 클라이언트</text>
+  <text class="tiny" x="405" y="514" text-anchor="middle">HTTP를 Tomcat 내부 요청으로 연결</text>
+  <text class="tiny" x="741" y="514" text-anchor="middle">Host, Context, Wrapper, Servlet을 찾음</text>
+  <text class="tiny" x="623" y="724" text-anchor="middle">Tomcat은 DispatcherServlet까지 실행하고, Controller 선택은 Spring MVC가 맡는다.</text>
+</svg>
