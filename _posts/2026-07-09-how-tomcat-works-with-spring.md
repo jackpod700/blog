@@ -613,10 +613,6 @@ Spring MVC는 `HandlerMapping`으로 Controller를 찾고, `HandlerAdapter`로 C
 
 JSON 응답이면 `HttpMessageConverter`가 body를 만들고, JSP 응답이면 `ViewResolver` 이후 Jasper가 JSP를 Servlet으로 바꾸어 HTML을 만든다.
 
-마지막으로 전체 구조를 그림으로 보면 다음과 같다.
-
-![Tomcat과 Spring MVC 요청 처리 전체 구조](/assets/img/posts/2026-07-09-tomcat-spring-architecture.svg)
-
 결국 전체 흐름은 다음 문장으로 정리할 수 있다.
 
 ```text
