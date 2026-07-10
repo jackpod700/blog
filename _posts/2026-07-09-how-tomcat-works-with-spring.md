@@ -597,6 +597,8 @@ Controller 입장에서는 `/posts/1`이지만, 클라이언트 입장에서는 
 
 이 차이를 모르면 Tomcat 배포 후 "로컬에서는 됐는데 서버에서는 404가 난다" 같은 문제를 만나기 쉽다.
 
+요청을 실제로 실행하는 Acceptor, Poller, worker thread pool과 `maxThreads`, `maxConnections`, `acceptCount`의 관계는 [Tomcat의 요청 처리 스레드는 어떻게 동작할까]({% post_url 2026-07-10-how-tomcat-threads-work-with-spring %})에서 이어서 살펴본다.
+
 ## 정리
 
 Tomcat은 Spring Controller를 직접 실행하지 않는다.
